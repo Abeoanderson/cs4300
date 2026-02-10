@@ -1,20 +1,17 @@
-def main():
-    print("Enter Student Detials: \n")
-    S_Num = int(input("Student Num: \n"))
-    S_GPA = float(input("Student GPA: \n"))
-    S_Name = input("Student Name: \n")
-    x = input("Enroll student? (Y or N) ")
-    if (x == "Y"):
-        S_enrolled = True
-    else
-        S_enrolled = False
+def main(S_Num, S_GPA, S_Name, enrolled_input):
+    """generates a student based on input"""
+    enrolled_input = enrolled_input.strip().upper()
+    S_enrolled = enrolled_input == "Y"
 
-    print("student %s number: %d GPA: %f ")
-
-    return S_Num, S_GPA, S_Name, S_Enrolled
-
-
+    return S_Num, S_GPA, S_Name, S_enrolled
 
 
 if __name__ == "__main__":
-    main()
+    print("Enter Student Details:\n")
+    S_Num = int(input("Student Num: "))
+    S_GPA = float(input("Student GPA: "))
+    S_Name = input("Student Name: ")
+    enrolled_input = input("Enroll student? (Y or N): ")
+
+    result = main(S_Num, S_GPA, S_Name, enrolled_input)
+    print(result)
