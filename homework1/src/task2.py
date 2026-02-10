@@ -1,8 +1,18 @@
 def main():
-    x = 1 # int
-    y = 2.0  # float
-    z = "abc"  # string
-    a = True    # bool
+    print("Enter Student Detials: \n")
+    S_Num = int(input("Student Num: \n"))
+    S_GPA = float(input("Student GPA: \n"))
+    S_Name = input("Student Name: \n")
+    x = input("Enroll student? (Y or N) ")
+    if (x == "Y"):
+        S_enrolled = True
+    else
+        S_enrolled = False
+
+    print("student %s number: %d GPA: %f ")
+
+    return S_Num, S_GPA, S_Name, S_Enrolled
+
 
 
 
