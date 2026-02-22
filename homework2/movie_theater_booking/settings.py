@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['editor-aoa-21.devedu.io', 'localhost', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    "bookings.apps.BookingsConfig",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -105,7 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'MST'
 
 USE_I18N = True
 
