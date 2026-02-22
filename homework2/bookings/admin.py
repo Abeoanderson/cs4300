@@ -4,9 +4,13 @@ from .models import Movie, Seat, Booking
 
 @admin.register(Movie)
 class MovieAdmin(admin.ModelAdmin):
-    list_display = ("title", "release_date", "duration")
+    list_display = ("title", "release_date", "duration_display")
     search_fields = ("title",)
     list_filter = ("release_date",)
+
+    @admin.display(description="Duration (mins)", ordering="duration")
+    def duration_display(self, obj):
+        return obj.duration
 
 
 @admin.register(Seat)
