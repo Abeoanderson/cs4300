@@ -1,0 +1,103 @@
+{% extends "bookings/base.html" %}
+
+{% block title %}Book — {{ movie.title }}{% endblock %}
+
+{% block content %}
+<nav aria-label="breadcrumb" class="mb-4">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'bookings:movie_list' %}">Films</a></li>
+    <li class="breadcrumb-item active">Book Seat</li>
+  </ol>
+</nav>
+
+<div class="row g-4">
+
+  <!-- Movie details -->
+  <div class="col-md-5">
+    <div class="card shadow-sm h-100">
+      <div class="card-header bg-dark text-white">
+        <h5 class="mb-0">{{ movie.title }}</h5>
+      </div>
+      <div class="card-body">
+        {% if movie.description %}
+          <p class="card-text">{{ movie.description }}</p>
+        {% endif %}
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item d-flex justify-content-between">
+            <span class="text-muted">Release Date</span>
+            <strong>{{ movie.release_date|date:"d M Y" }}</strong>
+          </li>
+          <li class="list-group-item d-flex justify-content-between">
+            <span class="text-muted">Duration</span>
+            <strong>{{ movie.duration }} min</strong>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Booking form -->
+  <div class="col-md-7">
+    <div class="card shadow-sm">
+      <div class="card-header bg-primary text-white">
+        <h5 class="mb-0">Select a Seat</h5>
+      </div>
+      <div class="card-body">
+        {% if seats %}
+          <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="seat_id" class="form-label fw-semibold">Available Seats</label>
+              <select name="seat_id" id="seat_id" class="form-select" required>
+                <option value="">-- Choose a seat --</option>
+                {% for seat in seats %}
+                  {% if seat.booking_status == 'available' %}
+                    <option value="{{ seat.pk }}">Seat {{ seat.seat_number }}</option>
+                  {% endif %}
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Seat Status Legend</label>
+              <div class="d-flex gap-3">
+                <span class="badge bg-success">Available</span>
+                <span class="badge bg-danger">Booked</span>
+                <span class="badge bg-warning text-dark">Reserved</span>
+              </div>
+            </div>
+
+            <div class="d-grid gap-2 d-sm-flex">
+              <button type="submit" class="btn btn-primary">Confirm Booking</button>
+              <a href="{% url 'bookings:movie_list' %}" class="btn btn-outline-secondary">Cancel</a>
+            </div>
+          </form>
+        {% else %}
+          <div class="alert alert-warning mb-0">
+            No seats are available for this screening.
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- All seats overview -->
+    <div class="card shadow-sm mt-3">
+      <div class="card-header">All Seats</div>
+      <div class="card-body">
+        <div class="d-flex flex-wrap gap-2">
+          {% for seat in seats %}
+            {% if seat.booking_status == 'available' %}
+              <span class="badge bg-success fs-6">{{ seat.seat_number }}</span>
+            {% elif seat.booking_status == 'booked' %}
+              <span class="badge bg-danger fs-6">{{ seat.seat_number }}</span>
+            {% else %}
+              <span class="badge bg-warning text-dark fs-6">{{ seat.seat_number }}</span>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

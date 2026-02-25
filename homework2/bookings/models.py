@@ -6,8 +6,11 @@ class Movie(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField(blank=True)
     release_date = models.DateField()
-    duration = models.PositiveIntegerField(help_text="Duration in minutes")
-
+    duration = models.PositiveIntegerField(
+    help_text="Duration in minutes",
+    null=True,
+    blank=True
+)
     class Meta:
         ordering = ["-release_date"]
 

@@ -1,0 +1,47 @@
+{% extends "bookings/base.html" %}
+
+{% block title %}Movie List{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Available Movies</h2>
+
+<form method="get" class="d-flex gap-2 mb-4">
+  <input type="search" name="q" value="{{ query|default:'' }}"
+         class="form-control" placeholder="Search films..." />
+  <button type="submit" class="btn btn-outline-secondary">Search</button>
+  {% if query %}
+    <a href="{% url 'bookings:movie_list' %}" class="btn btn-outline-danger">Clear</a>
+  {% endif %}
+</form>
+
+{% if movies %}
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for movie in movies %}
+    <div class="col">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">{{ movie.title }}</h5>
+          <p class="card-text text-muted">{{ movie.description|truncatewords:20 }}</p>
+          <ul class="list-unstyled small text-muted">
+            <li><strong>Release:</strong> {{ movie.release_date|date:"d M Y" }}</li>
+            <li><strong>Duration:</strong> {{ movie.duration }} min</li>
+          </ul>
+        </div>
+        <div class="card-footer bg-white border-top-0">
+          <a href="{% url 'bookings:book_seat' movie.pk %}" class="btn btn-primary w-100">
+            Book Now
+          </a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <div class="text-center py-5 text-muted">
+    <p class="fs-5">No films found{% if query %} for "{{ query }}"{% endif %}.</p>
+    {% if query %}
+      <a href="{% url 'bookings:movie_list' %}" class="btn btn-outline-primary">View All Films</a>
+    {% endif %}
+  </div>
+{% endif %}
+{% endblock %}

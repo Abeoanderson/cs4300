@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-55ie8d3+pgn(qkfxh3f#oavp-7$&s$b$!99l(q=o*xjn+-0^7l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['editor-aoa-21.devedu.io', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['app-aoa-21.devedu.io', 'localhost', '0.0.0.0:3000']
 
 
 # Application definition
@@ -56,7 +56,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
-        'APP_DIRS': True,
+        'APP_DIRS': True,   # ← this must be True
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
