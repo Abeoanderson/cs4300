@@ -15,7 +15,7 @@ def movie_list(request):
     movies = Movie.objects.all()
 
     if query:
-        movies = movies.filter(title__icontains=query)
+        movies = movies.filter(title__icontains=query) # filter movies list
 
     # Add seat count to each movie
     for movie in movies:
@@ -36,20 +36,20 @@ def seat_booking(request, movie_id):
     if request.method == "POST":
         seat_id = request.POST.get("seat_id")
         seat = get_object_or_404(Seat, pk=seat_id)
-
+        # check if requested seat is available
         if not seat.is_available:
             messages.error(request, f"Seat {seat.seat_number} is no longer available.")
             return redirect("bookings:seat_booking", movie_id=movie.pk)
-
+        # check if another booking for the seat occured
         if Booking.objects.filter(movie=movie, seat=seat).exists():
             messages.error(request, "That seat is already booked for this film.")
             return redirect("bookings:seat_booking", movie_id=movie.pk)
-
+        #book and give confirmation message to user
         Booking.objects.create(movie=movie, seat=seat, user=request.user)
         messages.success(request, f'Booking confirmed! Seat {seat.seat_number} for "{movie.title}".')
         return redirect("bookings:booking_history")
 
-    return render(request, "/bookings/seat_booking.html", {
+    return render(request, "bookings/seat_booking.html", {
         "movie": movie,
         "seats": seats,
     })
