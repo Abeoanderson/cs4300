@@ -7,7 +7,7 @@ from .models import Movie, Seat, Booking
 from .serializers import MovieSerializer, SeatSerializer, BookingSerializer
 
 
-#  Template Views
+#  Movie view
 
 def movie_list(request):
     """Show all movies, with a search option."""
@@ -25,7 +25,7 @@ def movie_list(request):
         "movies": movies,
         "query": query,
     })
-
+# seat booking view
 
 @login_required
 def seat_booking(request, movie_id):
@@ -49,11 +49,11 @@ def seat_booking(request, movie_id):
         messages.success(request, f'Booking confirmed! Seat {seat.seat_number} for "{movie.title}".')
         return redirect("bookings:booking_history")
 
-    return render(request, "bookings/templates/booking/seat_booking.html", {
+    return render(request, "/bookings/seat_booking.html", {
         "movie": movie,
         "seats": seats,
     })
-
+# booking history view
 
 @login_required
 def booking_history(request):
@@ -93,9 +93,7 @@ def cancel_booking(request, booking_id):
     return redirect("bookings:booking_history")
 
 
-# ─────────────────────────────────────────
-#  DRF API ViewSets
-# ─────────────────────────────────────────
+#View sets for DRF
 
 class MovieViewSet(viewsets.ModelViewSet):
     queryset = Movie.objects.all()
