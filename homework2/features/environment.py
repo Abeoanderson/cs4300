@@ -1,15 +1,10 @@
-import django
-import os
-
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "movie_theater_booking.settings")
-
-def before_all(context):
-    django.setup()
+from django.test.utils import setup_test_environment
 
 def before_scenario(context, scenario):
-    from django.test.utils import setup_test_environment
-    setup_test_environment()
+    from django.db import connection
+    connection.set_autocommit(False)
 
 def after_scenario(context, scenario):
     from django.db import connection
-    connection.close()
+    connection.rollback()
+    connection.set_autocommit(True)

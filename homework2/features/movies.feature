@@ -1,11 +1,10 @@
 Feature: Movie Listings
     As a user
     I want to view available movies
-    So that I can decide what to book
+     So that I can decide what to book
 
-    Scenario: view all movies
+     Scenario: view all movies
         Given the database has movies
-        when I request the movie Listings
-        Then I should recieve a 200 status code
-        and the response I should contian movie titles
-        
+        When I request the movie list                    
+        Then I should receive a 200 status code          
+        And the response should contain movie titles     
