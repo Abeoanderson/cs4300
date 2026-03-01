@@ -37,10 +37,15 @@
           {% endif %}
 
           <div class="d-grid">
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="submit" class="btn btn-danger">Login</button>
           </div>
         </form>
       </div>
+
+      <div class="card-footer text-center text-muted py-3">
+        Don't have an account? <a href="{% url 'bookings:register' %}" class="text-danger fw-semibold">Register here</a>
+      </div>
+
     </div>
   </div>
 </div>

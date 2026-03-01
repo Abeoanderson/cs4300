@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.utils import timezone
 from rest_framework import viewsets, permissions, filters
@@ -91,9 +92,21 @@ def cancel_booking(request, booking_id):
         messages.success(request, "Booking cancelled and seat released.")
 
     return redirect("bookings:booking_history")
+#register new user
+def register_view(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Account created! You can now log in.")
+            return redirect("login")
+    else:
+        form = UserCreationForm()
+    return render(request, "bookings/register.html", {"form": form})
 
 
 #View sets for DRF
+
 
 class MovieViewSet(viewsets.ModelViewSet):
     queryset = Movie.objects.all()
