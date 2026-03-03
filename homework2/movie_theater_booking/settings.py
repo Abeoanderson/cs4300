@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-55ie8d3+pgn(qkfxh3f#oavp-7$&s$b$!99l(q=o*xjn+-0^7l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['app-aoa-21.devedu.io', 'localhost', '0.0.0.0:3000']
+ALLOWED_HOSTS = ['app-aoa-21.devedu.io', 'localhost', '0.0.0.0:3000', 'cs4300-nhl5.onrender.com']
 
 
 # Application definition
