@@ -3,9 +3,9 @@
       "model": "bookings.movie",
       "pk": 1,
       "fields": {
-        "title": "Inception",
-        "description": "A thief who steals corporate secrets through dream-sharing technology is given the task of planting an idea into the mind of a CEO.",
-        "release_date": "2010-07-16",
+        "title": "Iron Man",
+        "description": "A billionaire industrialist and genius inventor, Tony Stark (Robert Downey Jr.), is conducting weapons tests overseas, but terrorists kidnap him to force him to build a devastating weapon. Instead, he builds an armored suit and upends his captors. Returning to America, Stark refines the suit and uses it to combat crime and terrorism.",
+        "release_date": "2008-05-01",
         "duration": 148
       }
     },
@@ -13,20 +13,40 @@
       "model": "bookings.movie",
       "pk": 2,
       "fields": {
-        "title": "The Dark Knight",
-        "description": "When the menace known as the Joker wreaks havoc on Gotham City, Batman must confront chaos and accept one of the greatest psychological tests of his ability to fight injustice.",
-        "release_date": "2008-07-18",
-        "duration": 152
+        "title": "The Incredable Hulk",
+        "description": "Scientist Bruce Banner (Edward Norton) desperately seeks a cure for the gamma radiation that contaminated his cells and turned him into The Hulk. Cut off from his true love Betty Ross (Liv Tyler) and forced to hide from his nemesis, Gen. Thunderbolt Ross (William Hurt)",
+        "release_date": "2008-07-13",
+        "duration": 112
       }
     },
     {
       "model": "bookings.movie",
       "pk": 3,
       "fields": {
-        "title": "Interstellar",
-        "description": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
-        "release_date": "2014-11-07",
-        "duration": 169
+        "title": "Iron Man 2",
+        "description": "With the world now aware that he is Iron Man, billionaire inventor Tony Stark (Robert Downey Jr.) faces pressure from all sides to share his technology with the military. He is reluctant to divulge the secrets of his armored suit, fearing the information will fall into the wrong hands. With Pepper Potts (Gwyneth Paltrow) and Rhodey Rhodes (Don Cheadle) by his side, Tony must forge new alliances and confront a powerful new enemy.",
+        "release_date": "2010-5-07",
+        "duration": 124
+      }
+    },
+    {
+      "model": "bookings.movie",
+      "pk": 4,
+      "fields": {
+        "title": "Thor",
+        "description": "As the son of Odin (Anthony Hopkins), king of the Norse gods, Thor (Chris Hemsworth) will soon inherit the throne of Asgard from his aging father. However, on the day that he is to be crowned, Thor reacts with brutality when the gods' enemies, the Frost Giants, enter the palace in violation of their treaty. As punishment, Odin banishes Thor to Earth. While Loki (Tom Hiddleston), Thor's brother, plots mischief in Asgard, Thor, now stripped of his powers, faces his greatest threat.",
+        "release_date": "2011-5-11",
+        "duration": 114
+      }
+    },
+    {
+      "model": "bookings.movie",
+      "pk": 5,
+      "fields": {
+        "title": "Captian America, The Last Avenger",
+        "description": "It is 1941 and the world is in the throes of war. Steve Rogers (Chris Evans) wants to do his part and join America's armed forces, but the military rejects him because of his small stature. Finally, Steve gets his chance when he is accepted into an experimental program that turns him into a supersoldier called Captain America. Joining forces with Bucky Barnes (Sebastian Stan) and Peggy Carter (Hayley Atwell), Captain America leads the fight against the Nazi-backed HYDRA organization.",
+        "release_date": "2011-7-22",
+        "duration": 124
       }
     },
     {
